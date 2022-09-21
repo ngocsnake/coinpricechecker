@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import SearchBox from "./Components/SearchBox";
+import TableC from "./Components/TableC";
+
+import { useState } from "react";
 
 function App() {
+  const [query, setQuery] = useState("");
+
+  const handleChangSearchInput = (e) => {
+    setQuery(e);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      className="App"
+      style={{
+        width: "100vw",
+        height: "100vh",
+        backgroundColor: "#1A1A1F",
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "column",
+      }}
+    >
+      <div style={{ margin: "70px 0" }}>
+        <SearchBox onChange={handleChangSearchInput}></SearchBox>
+      </div>
+
+      <TableC query={query}></TableC>
     </div>
   );
 }
